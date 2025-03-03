@@ -1,4 +1,4 @@
-
+/* 
 
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -75,4 +75,22 @@
 
 .bd-mode-toggle .dropdown-menu .active .bi {
   display: block !important;
+} */
+
+footer {
+  background-color: #000000;
+  color: white;
+ height: 400px;
+
+}
+.btn{
+  color: plum;
+}
+img{
+  height: 100px;
+  width: 100px;
+}
+.a{
+  height: 30px;
+  width: 30px;
 }
