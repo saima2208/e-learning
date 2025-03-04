@@ -1,0 +1,23 @@
+<div class="container">
+    <fieldset>
+    <h1>{{ isEditMode ? "Edit Course" : "Add Course" }}</h1>
+    <form (ngSubmit)="saveCourse()">
+      <label for="name">Name:</label><br />
+      <input type="text" name="name" [(ngModel)]="courses.name" required /><br />
+
+      <label for="description">Description:</label><br />
+      <textarea [(ngModel)]="courses.description" name="description" required></textarea><br />
+  
+     <label for="startDate">Start Date</label><br>
+     <input type="text" name="startDate" [(ngModel)]="courses.startDate" required /><br />
+
+     <label for="instructor">Instructor</label><br>
+     <input type="text" name="instructor" [(ngModel)]="courses.instructor" required /><br />
+
+     <label for="duration">Course Duration</label><br>
+     <input type="text" name="duration" [(ngModel)]="courses.duration" required /><br />
+
+      <button type="submit" class="btn btn-success">{{ isEditMode ? "Update" : "Add" }}</button>
+    </form>
+  </fieldset>
+  </div>

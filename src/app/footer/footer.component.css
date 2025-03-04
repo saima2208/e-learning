@@ -1,5 +1,5 @@
 
-footer {
+.b {
   background-color: #000000;
   color: white;
  height: 400px;
@@ -16,15 +16,6 @@ img{
   height: 30px;
   width: 30px;
 }
-.foot {
-  background-color: rgb(14, 197, 230);
-  padding: 20px;
+p{
   text-align: center;
-}
-
-.foo p {
-  text-align: justify;
-  color: white;
-  font-size: 16px;
-  margin-left: 500px;
 }
