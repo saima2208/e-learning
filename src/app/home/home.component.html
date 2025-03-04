@@ -1,4 +1,4 @@
-<h3>Our Courses</h3>
+<h1>Our Courses</h1>
 <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <div class="card" style="width: 18rem;">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv_al5pqaDdDHWONxiCA-B1mjpNdbA8fEe8g&s" alt="">
@@ -101,4 +101,66 @@
          </div>
        </div>
     </div>
+<!-- 
+    Bootstrap Modal  -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registration Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    
+                    
+                </div>
+                <div class="modal-body">
+                    <form (submit)="saveTeacher()">
+                        <div class="mb-3">
+                            <label class="form-label"> Full Name:</label>
+                            <input type="text" class="form-control"  required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Father's Name:</label>
+                            <input type="text" class="form-control" name="fatherName"
+                                required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mother's Name:</label>
+                            <input type="text" class="form-control" 
+                                name="motherName" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Address:</label>
+                            <textarea name="address" class="form-control"
+                                required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Phone No:</label>
+                            <input type="text" class="form-control" name="phoneNo"
+                                required />
+                        </div>
+                        <div class="mb-3 form-check">
+                          <label class="form-check-label">Email:</label>
+                            <input type="email" class="form-control" name="email"
+                                />
+                            
+                        </div>
+                        <div class="mb-3 form-check">
+                          <label class="form-check-label">Password</label>
+                            <input type="" class="form-control" name="password"
+                                required />
+                           
+                        </div>
+                        <div class="mb-3 form-check">
+                          <label class="form-check-label">Confirm Password</label>
+                            <input type="" class="form-control" name="password"
+                                required />
+                           
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
        
