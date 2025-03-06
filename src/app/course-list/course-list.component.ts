@@ -32,6 +32,6 @@ constructor(private router: Router) {}
     }
   }
   addNewCourse(): void {
-    this.router.navigate(['/add'], { state: { course: new Course(0, '', '','', '',0) } });
+    this.router.navigate(['/addcourse'], { state: { course: new Course(0, '', '','', '',0) } });
   }
 }

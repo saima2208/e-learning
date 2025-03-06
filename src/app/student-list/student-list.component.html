@@ -1,0 +1,40 @@
+<div class="container">
+    <h1>Student List</h1>
+    <table class="table table-striped table-hover table-bordered ">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>ID</th>
+          <th>Student Name</th>
+          <th>Father Name</th>
+          <th>Mother Name</th>
+          <th>Address</th>
+         <th>Mobile No</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (student of students; track student.name) {
+        <!-- <tr *ngFor="let student of students"> -->
+          <tr>
+            <td>{{students.indexOf(student) + 1}}</td>
+          <td>{{ student.id }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.fatherName }}</td>
+          <td>{{ student.motherName }}</td>
+          <td>{{ student.address }}</td>
+          <td>{{ student.mobileNo }}</td>
+          <td>{{ student.email }}</td>
+          
+          <td>
+            <button class="btn btn-primary" (click)="editStudent(student)">Edit</button>
+            <button class="btn btn-warning" (click)="deleteStudent(student)">Delete</button>
+          </td>
+        </tr>}
+      </tbody>
+    </table>
+    <button  class=" btn btn-primary" (click)="addNewStudent()">Add Course</button>
+  </div>
+  
+
