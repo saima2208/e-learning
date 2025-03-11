@@ -1,51 +1,30 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { LoginRegisterService } from '../../services/login-register/login-register.service';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { LoginRegisterService } from '../services/login-register.service';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  userEmail: string = "";
-  userPassword: string = "";
-  message: SafeHtml = "";
-  isError: boolean = false;
+  email: string = "";
+  pass: string = "";
 
   constructor(
-    private loginRegisterService: LoginRegisterService,
-    private domSanitizer: DomSanitizer
+    private loginRegisterService: LoginRegisterService
   ) {}
 
   onSubmit() {
-    if (this.userEmail != "", this.userPassword != "") {
-      if (this.loginRegisterService.login(this.userEmail, this.userPassword)) {
-        this.message = this.domSanitizer.bypassSecurityTrustHtml('<div class="alert alert-success" role="alert"><i class="bi bi-check-circle"></i> Login successful! Please wait...</div>');
-        this.isError = false;
-        setTimeout(() => {
-          this.message = "",
-          window.location.reload();
-        }, 1000);
-        
-        this.userEmail = "";
-        this.userPassword = "";
-
-      } else {
-        this.message = this.message = this.domSanitizer.bypassSecurityTrustHtml('<div class="alert alert-danger" role="alert"><i class="bi bi-exclamation-circle"></i> Invalid credentials! Try again...</div>');
-        this.isError = true;
-        setTimeout(() => this.message = "", 3000);
-      }
+    if (this.loginRegisterService.login(this.email,this.pass)) {
+      alert('Login successful!');
+      window.location.href="/admin";
 
     } else {
-      this.message = this.domSanitizer.bypassSecurityTrustHtml('<div class="alert alert-danger" role="alert"><i class="bi bi-x-circle"></i> Fill the form correctly!</div>');
-      this.isError = true;
-      setTimeout(() => this.message = "", 3000);
+      alert('Login Failed! Try again...');
     }
-
   }
 
 }

@@ -1,5 +1,5 @@
 export class Student {
-    id:number
+    id: number;
     name: string;
     fatherName: string;
     motherName: string;
@@ -9,7 +9,7 @@ export class Student {
     password: string;
   
 
-    constructor(id:number, name: string, fatherName: string, motherName: string, address: string, mobileNo: string, email: string, password: string, ) {
+    constructor(id: number, name: string, fatherName: string, motherName: string, address: string, mobileNo: string, email: string, password: string, ) {
         this.id = id;
         this.name = name;
         this.fatherName = fatherName;

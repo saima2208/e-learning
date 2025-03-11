@@ -1,45 +1,50 @@
 import { Injectable } from '@angular/core';
+import { Student } from '../model/student.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginRegisterService {
+
   constructor() { }
 
-  private userIdGenerator(): string {
-    return Math.floor(100000 + Math.random() * 900000).toString();
-  }
+  
 
   register(
-    user: {
-      userName: string; 
-      userEmail: string; 
-      userPassword: string 
-    }
+    user: Student = new Student(0,'','','','','','','')
   ): boolean {
-      let users = JSON.parse(localStorage.getItem('users') || '[]');
+      let users = JSON.parse(localStorage.getItem('students') || '[]');
 
-      if (users.some((u: any) => u.userEmail === user.userEmail)) {
+      if (users.some((u: any) => u.email === user.email)) {
         return false; 
       }
 
       const newUser = {
-        userId: this.userIdGenerator(),
-        ...user,
+        id: user.id,  // Ensure it's stored as a number
+        name: user.name,
+        fatherName: user.fatherName,
+        motherName: user.motherName,
+        address: user.address,
+        mobile: user.mobileNo,
+        email: user.email,
+        password: user.password
       };
 
       users.push(newUser);
-      localStorage.setItem('users', JSON.stringify(users));
+      localStorage.setItem('students', JSON.stringify(users));
       return true;
   }
+
+
+
 
   login(
     userEmail: string,
     userPassword: string
   ): boolean {
-    let users = JSON.parse(localStorage.getItem('users') || '[]');
+    let users = JSON.parse(localStorage.getItem('students') || '[]');
 
-    const user = users.find((u: any) => u.userEmail === userEmail && u.userPassword === userPassword);
+    const user = users.find((u: any) => u.email === userEmail && u.password === userPassword);
 
     if (user) {
       localStorage.setItem('loggedInUser', JSON.stringify(user));
@@ -48,5 +53,5 @@ export class LoginRegisterService {
 
     return false;
   }
-
+  
 }

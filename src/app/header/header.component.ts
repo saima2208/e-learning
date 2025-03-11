@@ -1,56 +1,35 @@
  import { Component, OnInit } from '@angular/core';
-import { Student } from '../model/student.model';
-import { Router } from '@angular/router';
+import { RegisterComponent } from "../register/register.component";
+import { LoginComponent } from "../login/login.component";
+import { LoggedinUserService } from '../services/loggedin-user.service';
  
 
  @Component({
    selector: 'app-header',
-   imports: [],
+   imports: [RegisterComponent, LoginComponent],
    templateUrl: './header.component.html',  
     styleUrl: './header.component.css'
  })
- export class HeaderComponent  implements OnInit{
-students: Student = new Student(0,'','','','','','','');
+ export class HeaderComponent  implements OnInit {
+  isUserLoggedIn: boolean = false;
+  loggedinUserName: string = "";
 
-isEditMode: boolean = false;
-  
-constructor(private router: Router) {
-  const nav = this.router.getCurrentNavigation();
-  if (nav?.extras.state && nav.extras.state['student']) {
-    this.students = nav.extras.state['student'];
-    debugger;
-    this.isEditMode = true;
-  }if(this.students.id == 0){
-    this.isEditMode = false;
-}
-} 
-ngOnInit(): void {
-  // Check if editing an existing student
-  const state = history.state;
- if (state && state.student) {
-    this.students = state.student;
-   //  this.isEditMode = true;
+  constructor(
+    private loggedinUserService: LoggedinUserService
+  ) {}
+
+  ngOnInit(): void {
+    this.isUserLoggedIn = this.loggedinUserService.isLoggedIn();
+
+    if (this.isUserLoggedIn) {
+      const loggedInUser = this.loggedinUserService.getLoggedInUser();
+      this.loggedinUserName = loggedInUser ? loggedInUser.name : ''; 
+    }    
   }
+
+  logoutBtn() {
+    this.loggedinUserService.logout();
+    window.location.href="/home"
+  }
+
 }
-
-saveStudent(): void {
- const students = JSON.parse(localStorage.getItem('students') || '[]');
-
- if (this.isEditMode) {
-   // Update existing student
-   const index = students.findIndex((p: Student) => p.id === this.students.id);
-   if (index !== -1) {
-     students[index] = this.students;
-   }
- } else {
-   // Add new student
-   this.students.id = students.length > 0 ? Math.max(...students.map((p: Student) => p.id)) + 1 : 1;
-   students.push(this.students);
- }
-
- // Save back to localStorage
- localStorage.setItem('students', JSON.stringify(students));
- //this.router.navigate(['/student-list']); // Navigate back to student list
- alert('Student saved successfully');
-}
- }

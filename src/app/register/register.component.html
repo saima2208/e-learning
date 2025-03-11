@@ -1,34 +1,55 @@
-<div class="modal fade" id="register-modal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form (submit)="saveStudent()">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form (submit)="onSubmit(); $event.preventDefault()">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel2">Register</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Student Registration</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3">
+              <label for="name">Full Name:</label>
+              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" placeholder="Enter your name">
             </div>
-            <div class="modal-body">
-                <div *ngIf="message" [class.error]="isError" [class.success]="!isError" [innerHtml]="message"></div>
-                <div class="mb-3">
-                    <label for="username" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="username" name="username" [(ngModel)]="userName">
-                </div>
-                <div class="mb-3">
-                    <label for="useremail" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="useremail" name="useremail" [(ngModel)]="userEmail">
-                </div>
-                <div class="mb-3">
-                    <label for="userpassword" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="userpassword" name="userpassword" [(ngModel)]="userPassword">
-                </div>
-
+            <div class="mb-3">
+              <label for="fname">Father's Name:</label>
+              <input type="text" class="form-control" id="fname" name="fname" [(ngModel)]="fname" placeholder="Enter your father's name">
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" style="background-color: #F49291; border: none;">
-                    <i class="bi bi-send"></i>
-                    Submit
-                </button>
+            <div class="mb-3">
+              <label for="mname">Mother's Name:</label>
+              <input type="text" class="form-control" id="mname" name="mname" [(ngModel)]="mname" placeholder="Enter your mother's name">
             </div>
-        </form>
+            <div class="mb-3">
+              <label for="address">Address:</label>
+              <input type="text" class="form-control" id="address" name="address" [(ngModel)]="address" placeholder="Enter your address">
+            </div>
+            <div class="mb-3">
+              <label for="mobile">Mobile No:</label>
+              <input type="text" class="form-control" id="mobile" name="mobile" [(ngModel)]="mobile" placeholder="Enter your valid mobile number">
+            </div>
+            <div class="mb-3">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="Enter your valid email address">
+            </div>
+            <div class="mb-3">
+              <label for="pass">Password:</label>
+              <input type="password" class="form-control" id="pass" name="pass" [(ngModel)]="pass" placeholder="Set a strong password">
+            </div>
+            <!-- <div class="mb-3">
+              <label for="cpass">Confirm Password:</label>
+              <input type="password" class="form-control" id="cpass" placeholder="Confirm your password">
+            </div> -->
+  
+  
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        
       </div>
     </div>
-</div>
+    </form>
+  </div>

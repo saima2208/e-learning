@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { LoginRegisterService } from '../../services/login-register/login-register.service';
+import { Student } from '../model/student.model';
+import { LoginRegisterService } from '../services/login-register.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register',
@@ -11,49 +11,55 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  userName: string = "";
-  userEmail: string = "";
-  userPassword: string = "";
-  message: SafeHtml = "";
-  isError = false;
-  
+  name: string = '';
+  fname: string = '';
+  mname: string = '';
+  address: string = '';
+  mobile: string = '';
+  email: string = '';
+  pass: string = '';
+
   constructor(
-    private LoginRegisterService: LoginRegisterService,
-    private domSanitizer: DomSanitizer
+    private loginRegisterService: LoginRegisterService
   ) {}
 
-  onSubmit() {
-    if (this.userName != "", this.userEmail != "", this.userPassword != "") {
-
-      const success = this.loginRegisterService.register(
-        {
-          userName: this.userName,
-          userEmail: this.userEmail,
-          userPassword: this.userPassword
-        }
-      );
-
-      if (success) {
-        this.message = this.domSanitizer.bypassSecurityTrustHtml('<div class="alert alert-success" role="alert"><i class="bi bi-check-circle"></i> Registration successful! Please login...</div>');
-        this.isError = false;
-        // setTimeout(() => this.message = "", 3000);
-
-        this.userName = "";
-        this.userEmail = "";
-        this.userPassword = "";
-
-      } else {
-        this.message = this.domSanitizer.bypassSecurityTrustHtml('<div class="alert alert-danger" role="alert"><i class="bi bi-exclamation-circle"></i> User email already exists! Try with different email...</div>');
-        this.isError = true;
-        setTimeout(() => this.message = "", 3000);
-      }
-
-    } else {
-      this.message = this.domSanitizer.bypassSecurityTrustHtml('<div class="alert alert-danger" role="alert"><i class="bi bi-x-circle"></i> Fill the form correctly!</div>');
-      this.isError = true;
-      setTimeout(() => this.message = "", 3000);
-    }
-
+  private userIdGenerator(): number {
+    return Math.floor(100000 + Math.random() * 900000);
   }
+
+  saveStudent(){
+    const student = new Student(
+      this.userIdGenerator(), // Empty for the userId, this will be auto-generated in the service
+      this.name,
+      this.fname,
+      this.mname,
+      this.address,
+      this.mobile,
+      this.email,
+      this.pass
+    );
+
+    const registerDone = this.loginRegisterService.register(student);
+
+    if (registerDone) {
+      alert('Registration successful!');
+      // You can add code to reset the form here, or close the modal
+      this.resetForm();
+    } else {
+      alert('Registration failed. Email already exists.');
+    }
+  }
+
+  // Method to reset the form after submission
+  resetForm() {
+    this.name = '';
+    this.fname = '';
+    this.mname = '';
+    this.address = '';
+    this.mobile = '';
+    this.email = '';
+    this.pass = '';
+  }
+  
 
 }
