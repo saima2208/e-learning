@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <fieldset>
     <h1>{{ isEditMode ? "Edit Course" : "Add Course" }}</h1>
     <form (ngSubmit)="saveCourse()">
@@ -20,4 +20,40 @@
       <button type="submit" class="btn btn-success">{{ isEditMode ? "Update" : "Add" }}</button>
     </form>
   </fieldset>
+  </div> -->
+
+
+  <div class="form-container">
+    <fieldset class="form-fieldset">
+      <h1 class="form-title">{{ isEditMode ? "Edit Course" : "Add Course" }}</h1>
+      <form (ngSubmit)="saveCourse()" class="course-form">
+        <div class="form-group">
+          <label for="name">Course Name</label>
+          <input type="text" name="name" [(ngModel)]="courses.name" required class="form-input" />
+        </div>
+  
+        <div class="form-group">
+          <label for="description">Course Description</label>
+          <textarea [(ngModel)]="courses.description" name="description" required class="form-textarea"></textarea>
+        </div>
+  
+        <div class="form-group">
+          <label for="startDate">Start Date</label>
+          <input type="date" name="startDate" [(ngModel)]="courses.startDate" required class="form-input" />
+        </div>
+  
+        <div class="form-group">
+          <label for="instructor">Instructor</label>
+          <input type="text" name="instructor" [(ngModel)]="courses.instructor" required class="form-input" />
+        </div>
+  
+        <div class="form-group">
+          <label for="duration">Course Duration</label>
+          <input type="text" name="duration" [(ngModel)]="courses.duration" required class="form-input" />
+        </div>
+  
+        <button type="submit" class="btn-submit">{{ isEditMode ? "Update" : "Add" }}</button>
+      </form>
+    </fieldset>
   </div>
+  

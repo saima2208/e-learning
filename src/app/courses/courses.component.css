@@ -1,7 +1,17 @@
-.card{
+ .card{
     background-color: rgb(233, 229, 227);
     }
     img{
         width: 287px;
         height: 200px;
-    }
+    } 
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 + .d-flex {
+        margin-top: 30px;
+      }
+
+    

@@ -21,7 +21,7 @@ constructor(private router: Router) {}
   // Navigate to edit page
   editCourse(course: Course): void {
     const id = course.id;
-    this.router.navigate(['/add'], { state: { course } });
+    this.router.navigate(['addcourse'], { state: { course } });
   }
 
   // Delete course and update localStorage

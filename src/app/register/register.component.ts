@@ -43,8 +43,11 @@ export class RegisterComponent {
 
     if (registerDone) {
       alert('Registration successful!');
+      
       // You can add code to reset the form here, or close the modal
       this.resetForm();
+      window.location.href="/";
+
     } else {
       alert('Registration failed. Email already exists.');
     }
