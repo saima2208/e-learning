@@ -7,6 +7,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { RegisterComponent } from './register/register.component';
+import { AddbookComponent } from './addbook/addbook.component';
+import { BooklistComponent } from './booklist/booklist.component';
 
 export const routes: Routes = [
     {path: '',component:HomeComponent},
@@ -17,5 +19,6 @@ export const routes: Routes = [
     {path:'admin', component:AdminPanelComponent},
     {path:'studentlist', component:StudentListComponent},
     {path:'register',component:RegistrationComponent},
-    {path:'reg',component:RegisterComponent},
+    {path:'addbook',component:AddbookComponent},
+    {path:'booklist', component:BooklistComponent},
 ];
