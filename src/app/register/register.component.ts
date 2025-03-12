@@ -27,7 +27,7 @@ export class RegisterComponent {
     return Math.floor(100000 + Math.random() * 900000);
   }
 
-  saveStudent(){
+  saveAdmin(){
     const student = new Student(
       this.userIdGenerator(), // Empty for the userId, this will be auto-generated in the service
       this.name,
@@ -43,7 +43,7 @@ export class RegisterComponent {
 
     if (registerDone) {
       alert('Registration successful!');
-      
+
       // You can add code to reset the form here, or close the modal
       this.resetForm();
       window.location.href="/";
@@ -63,6 +63,6 @@ export class RegisterComponent {
     this.email = '';
     this.pass = '';
   }
-  
+
 
 }

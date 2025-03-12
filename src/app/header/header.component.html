@@ -38,6 +38,11 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">PDF</a>
         </li>
+        @if (isUserLoggedIn) {
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/admin">Admin</a>
+          </li>
+        }
 
 
         <!-- <li class="nav-item dropdown">
@@ -74,6 +79,8 @@
             data-bs-whatever="@mdo">Login</button>
           </div>
         } @else {
+
+
           <h5>
             User: <i>{{loggedinUserName}}</i>
             (<a (click)="logoutBtn()" style="cursor: pointer;font-size: 16px; color: rgb(20, 19, 19);">Logout</a>)
