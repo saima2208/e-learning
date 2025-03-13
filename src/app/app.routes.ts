@@ -13,6 +13,8 @@ import { ProgramdetailsComponent } from './programdetails/programdetails.compone
 import { RegisterComponent } from './register/register.component';
 import { AddbookComponent } from './addbook/addbook.component';
 import { BooklistComponent } from './booklist/booklist.component';
+import { AddinstructorComponent } from './addinstructor/addinstructor.component';
+import { InstructorlistComponent } from './instructorlist/instructorlist.component';
 
 export const routes: Routes = [
     {path: '',component:HomeComponent},
@@ -28,4 +30,6 @@ export const routes: Routes = [
     {path: 'coursedetails', component:ProgramdetailsComponent},
     {path:'addbook',component:AddbookComponent},
     {path:'booklist', component:BooklistComponent},
+    {path:'addinstructor',component:AddinstructorComponent},
+    {path:'instructorlist',component:InstructorlistComponent},
 ];
